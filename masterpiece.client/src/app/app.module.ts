@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,16 +17,18 @@ import { IndexComponent } from './index/index.component';
     NavbarComponent,
     FooterComponent,
     HomeComponent,
-    IndexComponent
+    IndexComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: IndexComponent },
+      { path: '', component: IndexComponent, pathMatch: 'full' },
       { path: 'navbar', component: NavbarComponent },
       { path: 'footer', component: FooterComponent },
+      { path: 'about', component: AboutComponent }
 
 
 

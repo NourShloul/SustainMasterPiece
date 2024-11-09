@@ -1,0 +1,19 @@
+.my-account .row {
+  display: flex;
+  justify-content: center; /* Centers the form horizontally */
+}
+
+.account {
+  max-width: 600px; /* Optional: You can control the form width */
+  width: 100%; /* Ensures responsiveness */
+  margin: 0 auto; /* Centers the form container */
+}
+.input-block .form-control {
+  background-color: #f8f9fa !important; /* Custom background color */
+  border-radius: 12px; /* Custom border radius */
+}
+
+.theme_btn {
+  background-color: #ff5722 !important; /* Custom button color */
+  color: #fff !important;
+}

@@ -1,1 +1,42 @@
-<p>register works!</p>
+<!-- TITLE BANNER START -->
+<section class="problem_solve ps_2 ps_3 mb-80">
+  <figure class="wow zoomIn">
+    <img src="assets/images/studio.png" alt="" class="user-img">
+  </figure>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="tittle">
+          <h2>Sign Up</h2>
+          <p>Please enter your details to sign up.</p>
+        </div>
+        <form class="solve_from" #signUpForm="ngForm" (ngSubmit)="SignUp(signUpForm.value)">
+          <div class="form-group">
+            <input type="text" name="UserName" class="form-control" placeholder="Username" required ngModel>
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <!-- SVG Path Here -->
+            </svg>
+          </div>
+          <div class="form-group">
+            <input type="email" name="Email" class="form-control" placeholder="Your Email" required ngModel>
+            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <!-- SVG Path Here -->
+            </svg>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control password-input" name="Password" placeholder="Password" required ngModel>
+          </div>
+          <div class="form-group">
+            <button class="theme_btn" type="submit">
+              <span>Sign Up</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <figure class="wow zoomIn skye_img">
+    <img src="assets/images/shap/skye-shap-2.png" alt="" class="shap_img">
+  </figure>
+  <div class="shap_style style_2"><span></span></div>
+</section>

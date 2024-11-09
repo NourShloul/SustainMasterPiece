@@ -16,6 +16,8 @@ import { ServicesComponent } from './services/services.component';
 import { DashboardComponent } from './Admin/dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { LoginComponent } from './login/login.component';
     ServicesComponent,
     DashboardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -42,7 +46,11 @@ import { LoginComponent } from './login/login.component';
       { path: 'footer', component: FooterComponent },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'comingsoon', component: ComingsoonComponent }
+      { path: 'comingsoon', component: ComingsoonComponent },
+      { path: 'Register', component: RegisterComponent },
+      { path: 'Login', component: LoginComponent },
+      { path: 'Profile', component: ProfileComponent },
+      { path: 'EditProfile/:id', component: EditProfileComponent },
 
 
 

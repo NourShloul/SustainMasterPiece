@@ -10,6 +10,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+import { ComingsoonComponent } from './comingsoon/comingsoon.component';
+import { ServicesComponent } from './services/services.component';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { AboutComponent } from './about/about.component';
     FooterComponent,
     HomeComponent,
     IndexComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent,
+    ComingsoonComponent,
+    ServicesComponent,
+    DashboardComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -28,7 +40,9 @@ import { AboutComponent } from './about/about.component';
       { path: '', component: IndexComponent, pathMatch: 'full' },
       { path: 'navbar', component: NavbarComponent },
       { path: 'footer', component: FooterComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'about', component: AboutComponent },
+      { path: 'contact', component: ContactComponent },
+      { path: 'comingsoon', component: ComingsoonComponent }
 
 
 

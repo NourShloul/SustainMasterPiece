@@ -1,38 +1,24 @@
-<!-- TITLE BANNER START -->
-<section class="title-banner mb-80">
-  <div class="container-fluid-2">
-    <div class="title-wrapper">
-      <div class="row align-items-center">
-        <div class="col-lg-6 col-sm-6">
-          <div class="title-content">
-            <h1 class="medium-black fw-600">Profile</h1>
-          </div>
-        </div>
-        <div class="col-lg-6 col-sm-6 d-sm-block d-none">
-          <div class="title-image text-end">
-            <img src="assets/media/backgrounds/banner-image.png" alt="">
-          </div>
+<section class="title-banner mb-80 ps_2 ps_3">
+  <figure class="wow zoomIn">
+    <img [src]="user.image || 'assets/media/backgrounds/banner-image.png'" alt="" class="user-img">
+  </figure>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="title">
+          <h2>User Profile</h2>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div class="container py-5">
-    <h1 style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; color: black; text-align: center; margin-bottom: 30px; letter-spacing: 1px;">User Profile</h1>
     <div class="row">
       <div class="col-lg-4 mb-4">
         <!-- Profile Card -->
         <div class="card mb-4" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
           <div class="card-body text-center">
-            <img [src]="user.image"
-                 alt="avatar"
-                 class="rounded-circle img-fluid"
-                 style="width: 150px;">
+            <img [src]="user.image || 'assets/media/default-avatar.png'" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{ user.userName || 'John Doe' }}</h5>
 
-            <button type="button" class="btn" style="background-color: #d66a00; color: aliceblue;" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+            <button type="button" class="btn theme_btn" data-bs-toggle="modal" data-bs-target="#editProfileModal" routerLink="/EditProfile">
               Edit Profile
             </button>
           </div>
@@ -55,7 +41,6 @@
             </div>
           </div>
         </div>
-
 
         <!-- Objective Section -->
         <div class="card mb-4" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
@@ -107,58 +92,6 @@
             </div>
           </div>
         </div>
-        <!-- Adoption History Section -->
-        <!--<div class="card mb-4" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
-          <div class="card-body">
-            <h5 class="mb-3">Adoption Applications</h5>
-
-            <table *ngIf="adoptionData && adoptionData.length > 0" class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Application ID</th>
-                  <th>Animal Name</th>
-                  <th>Status</th>
-                  <th>Submitted At</th>
-                  <th>Download PDF</th>
-                  <th>Details</th>
-                  <th>Action</th>--> <!-- Updated Column Header -->
-                <!--</tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let item of adoptionData">
-                  <td>{{ item.applicationId }}</td>
-                  <td>{{ item.animalName }}</td>
-                  <td>{{ item.status }}</td>
-                  <td>{{ item.submittedAt | date }}</td>
-                  <td>
-                    <a (click)="downloadPDF(item)" class="download-icon">
-                      <i class="fas fa-download" style="color: darkorange;"></i>
-                    </a>
-                  </td>
-                  <td>
-                    <a [routerLink]="['/details', item.applicationId]" class="btn btn-info btn-sm">Details</a>
-                  </td>
-                  <td>
-                    <ng-container *ngIf="item.status === 'Approved'; else withdrawButton">
-                      <span class="text-success">Congratulations! You got it!</span>
-                    </ng-container>
-                    <ng-template #withdrawButton>
-                      <button (click)="withdrawApplication(item.applicationId)" class="btn btn-danger btn-sm">Withdraw</button>
-                    </ng-template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-
-            <div *ngIf="adoptionData.length === 0" class="text-center">
-              No adoption applications found.
-            </div>
-          </div>
-        </div>-->
-
-
-
       </div>
     </div>
   </div>

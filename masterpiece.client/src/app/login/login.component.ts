@@ -42,8 +42,12 @@ export class LoginComponent {
           title: 'Success',
           text: 'User Logged In Successfully'
         });
+        localStorage.setItem("userId", response.userId)
+        this._router.navigate(['']).then(() => {
+        window.location.reload()
 
-        this._router.navigate(['']);
+        });
+        
       },
       (error) => {
         console.error("Login Error:", error);

@@ -18,7 +18,7 @@
             <img [src]="user.image || 'assets/media/default-avatar.png'" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{ user.userName || 'John Doe' }}</h5>
 
-            <button type="button" class="btn theme_btn" data-bs-toggle="modal" data-bs-target="#editProfileModal" routerLink="/EditProfile">
+            <button type="button" class="btn theme_btn" data-bs-toggle="modal" data-bs-target="#editProfileModal" routerLink="/EditProfile/{{user.userId}}">
               Edit Profile
             </button>
           </div>

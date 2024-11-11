@@ -21,6 +21,10 @@ public partial class ServiceRequest
 
     public DateTime? UpdatedAt { get; set; }
 
+    public string? CompanyName { get; set; }
+
+    public long? Budget { get; set; }
+
     public virtual Service? Service { get; set; }
 
     public virtual Subservice? Subservice { get; set; }

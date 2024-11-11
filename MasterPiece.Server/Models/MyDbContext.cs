@@ -93,6 +93,8 @@ public partial class MyDbContext : DbContext
 
             entity.ToTable("ServiceRequest");
 
+            entity.Property(e => e.Budget).HasColumnName("budget");
+            entity.Property(e => e.CompanyName).HasMaxLength(100);
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .HasDefaultValue("Pending");

@@ -21,7 +21,7 @@
           <a class="nav-link" routerLink="" role="button">Home</a>
         </li>
         <li>
-          <a class="nav-link" href="#" role="button">Services</a>
+          <a class="nav-link" routerLink="/services" role="button">Services</a>
         </li>
         <li>
           <a class="nav-link" href="#" role="button">Gallery</a>
@@ -32,12 +32,12 @@
         <li>
           <a class="nav-link" href="#" role="button">Blog</a>
         </li>
-        <li><a  routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/contact">Contact</a></li>
       </ul>
     </div>
     <!-- Right Nav bar -->
     <ul class="right_nav">
-      <li class="dropdown cart_d">
+      <li class="dropdown cart_d" *ngIf="userId">
         <a class="nav-link" href="/Profile" role="button"><i class="fas fa-user"></i></a>
       </li>
       <li class="dropdown search_dropbown">
@@ -49,8 +49,17 @@
           </li>
         </ul>
       </li>
-      <li><a href="/Login" class="theme_btn">Login</a></li>
+      <!-- Display Login button if no userId -->
+      <li *ngIf="!userId">
+        <a routerLink="/Login" class="theme_btn">Login</a>
+      </li>
+      <!-- Display Logout button if userId is present -->
+      <li *ngIf="userId" class="theme_btn">
+        <a (click)="logout()">Logout</a>
+      </li>
     </ul>
+
+
   </nav>
 </header>
 <!-- Header Area -->

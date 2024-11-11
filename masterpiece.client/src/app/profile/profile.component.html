@@ -1,7 +1,4 @@
 <section class="title-banner mb-80 ps_2 ps_3">
-  <figure class="wow zoomIn">
-    <img [src]="user.image || 'assets/media/backgrounds/banner-image.png'" alt="" class="user-img">
-  </figure>
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
@@ -92,7 +89,42 @@
             </div>
           </div>
         </div>
+        <!-- the list of userRequest -->
+        <div class="row">
+          <!-- Orders Table -->
+          <div class="col-md-12 mb-4">
+            <div class="card" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
+              <div class="card-body">
+                <h5 class="mb-3">Service Requests</h5>
+                <table class="table table-bordered" *ngIf="servicesArray && servicesArray.length">
+                  <thead>
+                    <tr>
+                      <th>ReqID</th>
+                      <th>SubserID</th>
+                      <th>Company Name</th>
+                      <th>Description</th>
+                      <th>Budget</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of servicesArray">
+                      <td>{{item.requestId}}</td>
+                      <td>{{item.subserviceId}}</td>
+                      <td>{{item.companyName}}</td>
+                      <td>{{item.description}}</td>
+                      <td>{{item.budget}}</td>
+                      <td>{{item.status}}</td>
+                      <!--<td><button class="btn btn-primary" (click)="showOrderDetails(order)">Details</button></td>-->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>

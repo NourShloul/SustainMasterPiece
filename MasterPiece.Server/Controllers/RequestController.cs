@@ -45,5 +45,35 @@ namespace MasterPiece.Server.Controllers
             return Ok(request);
         }
 
+        [HttpGet("getServiceRequest")]
+        public IActionResult GetServiceRequest()
+        {
+            var request = _db.ServiceRequests.ToList();
+            if (request != null)
+            {
+                return Ok(request);
+            }
+            return NoContent();
+        }
+
+        [HttpGet("getServiceRequestByUserId/{id}")]
+        public IActionResult GetServiceRequestByUserId(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+
+            }
+
+            var userReq = _db.ServiceRequests.Where(p => p.UserId == id).ToList();
+
+            if (userReq != null)
+            {
+                return Ok(userReq);
+
+            }
+            return NotFound();
+        }
+
     }
 }

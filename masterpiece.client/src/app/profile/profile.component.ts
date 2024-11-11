@@ -12,15 +12,16 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
   user: any = { image: '' };
-  adoptionData: any[] = [];
-
+  servicesArray: any
+  userId: any;
   constructor(private _ser: URLService, private behaviorSubjectService: BehaviorSubjectService) { }
 
   ngOnInit() {
-    const userId = localStorage.getItem("userId")
+    const userId = localStorage.getItem("userId");
     if (userId) {
-      this.ShowUserDetails(Number(userId));
-      /*this.getAdoption(Number(userId));*/
+      this.userId = Number(userId); // Save userId to use it in the function
+      this.ShowUserDetails(this.userId);
+      this.getAllSubservicesByServiceId(); // Fetch the service requests
     } else {
       console.error("User ID not found.");
     }
@@ -56,5 +57,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  getAllSubservicesByServiceId() {
+    this._ser.GetServiceRequestByUserId(this.userId).subscribe((data) => {
+      this.servicesArray = data
+    })
+  }
 
 }

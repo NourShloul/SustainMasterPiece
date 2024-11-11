@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { URLService } from '../URLservices/url.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,24 +10,28 @@ import { URLService } from '../URLservices/url.service';
   styleUrl: './edit-profile.component.css'
 })
 export class EditProfileComponent implements OnInit {
-  @Input() user: any;
-  @Output() userUpdated = new EventEmitter<any>();
+  
   imagePreview: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
+  userId: any
+  userData: any;
 
-  constructor(private _ser: URLService) { }
+  constructor(private _ser: URLService , private _active : ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log(this.user);
-    this.user.objective = this.user.objective || '';
+    this.userId = this._active.snapshot.paramMap.get('id')
+    this.userId = Number(localStorage.getItem("userId"));
+    this.getUser();
   }
-
-  onFileSelected(event: Event): void {
+  image :any
+  onFileSelected(event :any): void {
+    debugger
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
       this.selectedFile = file;
-
+      debugger
+      this.image = event.target.files[0]
       const reader = new FileReader();
       reader.onload = (e) => {
         this.imagePreview = reader.result;
@@ -35,24 +40,26 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  OnSubmit() {
-    this.Edit();
+
+
+  getUser() {
+    this._ser.getUser(this.userId).subscribe((data) => {
+      this.userData = data;
+      console.log("userData", data);
+    });
   }
 
-  Edit(): void {
-    const formData = new FormData();
+  OnSubmit(data: any) {
 
-    formData.append('UserName', this.user.userName);
-    formData.append('Email', this.user.email);
-    formData.append('Description', this.user.description || '');
-    formData.append('UserAge', this.user.userAge?.toString() || '');
-    formData.append('UserAdderss', this.user.userAdderss || '');
-
-    if (this.selectedFile) {
-      formData.append('Image', this.selectedFile);
+    var form = new FormData();
+    for (let key in data) {
+      form.append(key, data[key]);
     }
 
-    this._ser.updateProfile(this.user.userId, formData).subscribe(
+
+    form.append("Email", this.userData.email)
+    form.append("Image", this.image)
+    this._ser.updateProfile(this.userId, form).subscribe(
       response => {
         console.log('Profile updated successfully:', response);
         Swal.fire({
@@ -61,7 +68,6 @@ export class EditProfileComponent implements OnInit {
           text: 'Profile updated successfully'
         });
 
-        this.userUpdated.emit({ ...this.user, image: this.imagePreview });
       },
       (error: HttpErrorResponse) => {
         console.error('Error updating profile:', error.message);

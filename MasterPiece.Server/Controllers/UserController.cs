@@ -2,6 +2,7 @@
 using MasterPiece.Server.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace MasterPiece.Server.Controllers
@@ -114,10 +115,6 @@ namespace MasterPiece.Server.Controllers
             {
                 user.UserName = userProfileDto.UserName;
             }
-            if (!string.IsNullOrEmpty(userProfileDto.Email))
-            {
-                user.Email = userProfileDto.Email;
-            }
             if (userProfileDto.PhoneNum != 0)  // Assuming 0 is used to signify no valid phone number
             {
                 user.PhoneNum = userProfileDto.PhoneNum;
@@ -138,9 +135,6 @@ namespace MasterPiece.Server.Controllers
             return Ok(new { message = "Profile updated successfully" });
         }
 
-
-
-
         private byte[] HashPassword(string password, out byte[] salt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
@@ -159,38 +153,5 @@ namespace MasterPiece.Server.Controllers
             }
         }
 
-        //[HttpPost("LoginAdmin")]
-        //public IActionResult Login([FromForm] UserAdminDTO user)
-        //{
-        //    var existingUser = _db.Admins.Where(a => a.Email == user.Email && a.Password == user.Password).FirstOrDefault();
-
-        //    if (existingUser == null)
-        //    {
-        //        return BadRequest("Invalid email or password.");
-        //    }
-
-        //    return Ok(new { UserId = existingUser.AdminId, message = "Login successful" });
-        //}
-
-        //[HttpDelete("{id}")]
-        //public IActionResult Withdraw(int id)
-        //{
-        //    // Find the adoption application in the database
-        //    var application = _db.ServiceRequests.Find(id);
-
-        //    if (application == null)
-        //    {
-        //        return NotFound(new { message = "Service Request not found." });
-        //    }
-
-        //    if (application.Status != "Approved")
-        //    {
-        //        _db.ServiceRequests.Remove(application);
-        //        _db.SaveChanges();
-        //        return Ok(new { message = "Service Request withdrawn successfully." });
-        //    }
-
-        //    return BadRequest(new { message = "Unable to withdraw the Service Request. It has already been accepted." });
-        //}
     }
 }

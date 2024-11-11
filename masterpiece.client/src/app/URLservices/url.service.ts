@@ -51,4 +51,13 @@ export class URLService {
   CreateServiceRequest(data: any): Observable<any> {
     return this.http.post<any>(`${this.staticData}/Request/createServiceRequest`,data)
   }
+
+  GetServiceRequest(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Request/getServiceRequest`)
+  }
+
+  GetServiceRequestByUserId(id: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Request/getServiceRequestByUserId/${id}`)
+  }
+
 }

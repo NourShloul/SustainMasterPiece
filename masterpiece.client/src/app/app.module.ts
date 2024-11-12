@@ -23,6 +23,7 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
 import { AddpostComponent } from './Blog/addpost/addpost.component';
 import { PostCommentsComponent } from './Blog/post-comments/post-comments.component';
 import { AllPostComponent } from './Blog/all-post/all-post.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AllPostComponent } from './Blog/all-post/all-post.component';
     ServiceRequestComponent,
     AddpostComponent,
     PostCommentsComponent,
-    AllPostComponent
+    AllPostComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -52,8 +54,8 @@ import { AllPostComponent } from './Blog/all-post/all-post.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: IndexComponent, pathMatch: 'full' },
-      { path: 'navbar', component: NavbarComponent },
-      { path: 'footer', component: FooterComponent },
+      //{ path: 'navbar', component: NavbarComponent },
+      //{ path: 'footer', component: FooterComponent },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'comingsoon', component: ComingsoonComponent },
@@ -68,6 +70,8 @@ import { AllPostComponent } from './Blog/all-post/all-post.component';
       { path: "AddPost", component: AddpostComponent },
       { path: 'allposts', component: AllPostComponent },
       { path: 'postcomments/:id', component: PostCommentsComponent },
+      /////////////Project//////////////
+      { path: 'project', component: ProjectComponent },
 
 
 

@@ -1,0 +1,29 @@
+<!-- Services Area -->
+<section class="services_area">
+  <div class="shap_style ss_2 wow zoomIn"><span></span></div>
+  <div class="tittle">
+    <h4>Our Projects</h4>
+    <h2>Driving Sustainable Growth with Innovative Digital Solutions</h2>
+    <!-- Tidings Blog Area -->
+    <section class="tidings_blog_area services_area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 wow fadeIn" data-wow-delay="0.4s" *ngFor="let item of servicesArray">
+            <div class="tidings_item">
+              <h6><img style="height:200px; width:fit-content" src="assets/images/studio.png" alt=""></h6>
+              <a href="blog-details.html" class="heding">{{item.projectName}}</a>
+              <br>
+              <br>
+              <p>{{item.description}}</p>
+              <a href="#" class="read_more">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="shap_style ss_2 wow zoomIn"><span></span></div>
+    </section>
+    <!-- Tidings Blog Area -->
+  </div>
+</section>
+<!-- Services Area -->
+

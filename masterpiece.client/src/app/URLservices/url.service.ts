@@ -107,6 +107,30 @@ export class URLService {
     return this.http.get<any>(`${this.staticData }/Blog/GetAllAcceptedPost`);
 
   }
+  ////////////////////Projects(Gallery)///////////////////////////
 
+  getAllProjects(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Project/Project/GetAllProjects`)
+  }
+
+
+  ///////////////contact////////////////////////////////
+  addContact(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Contact/AddContact`, data)
+  }
+
+  getContact(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Contact/GetByDesc`);
+
+  }
+
+  deletContact(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Contact/DeleteContact/${id}`)
+  }
+
+  GetSheler(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Contact/latest`)
+  }
 
 }

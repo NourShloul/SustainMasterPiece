@@ -39,34 +39,14 @@
       <h2>Driving Sustainable Growth with Innovative Digital Solutions</h2>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-md-6 wow fadeInUp">
+      <div class="col-lg-4 col-md-6 wow fadeInUp" *ngFor="let item of servicesArray">
         <div class="services_items">
           <div class="icons">
             <img src="assets/images/icons/services-icons-1.png" alt="">
             <span></span>
           </div>
-          <a href="#">Market Analysis</a>
-          <p>In-depth research to understand market dynamics and identify sustainable growth opportunities for your brand.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-        <div class="services_items">
-          <div class="icons">
-            <img src="assets/images/icons/services-icons-2.png" alt="" class="icon_2">
-            <span></span>
-          </div>
-          <a href="#">Sustainable Development</a>
-          <p>Implementing eco-conscious digital solutions that drive impact while respecting the environment.</p>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-        <div class="services_items">
-          <div class="icons">
-            <img src="assets/images/icons/services-icons-3.png" alt="" class="icon_3">
-            <span></span>
-          </div>
-          <a href="#">Creative Prototyping</a>
-          <p>Bringing ideas to life with prototype development focused on innovation and sustainability.</p>
+          <a routerLink="/subServices/{{item.serviceId}}">{{item.name}}</a>
+          <p>{{item.description}}</p>
         </div>
       </div>
     </div>

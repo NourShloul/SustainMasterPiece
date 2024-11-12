@@ -25,6 +25,8 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Post> Posts { get; set; }
 
+    public virtual DbSet<Project> Projects { get; set; }
+
     public virtual DbSet<Reply> Replies { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
@@ -138,6 +140,16 @@ public partial class MyDbContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Posts__UserId__5070F446");
+        });
+
+        modelBuilder.Entity<Project>(entity =>
+        {
+            entity.HasKey(e => e.ProjectId).HasName("PK__Project__761ABEF045B769E3");
+
+            entity.ToTable("Project");
+
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.ProjectName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Reply>(entity =>

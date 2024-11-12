@@ -15,7 +15,8 @@ export class EditProfileComponent implements OnInit {
   selectedFile: File | null = null;
   userId: any
   userData: any;
-
+  @Input() user: any;
+  @Output() userUpdated = new EventEmitter<any>();
   constructor(private _ser: URLService , private _active : ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -25,12 +26,11 @@ export class EditProfileComponent implements OnInit {
   }
   image :any
   onFileSelected(event :any): void {
-    debugger
+   
     const fileInput = event.target as HTMLInputElement;
     if (fileInput.files && fileInput.files[0]) {
       const file = fileInput.files[0];
       this.selectedFile = file;
-      debugger
       this.image = event.target.files[0]
       const reader = new FileReader();
       reader.onload = (e) => {

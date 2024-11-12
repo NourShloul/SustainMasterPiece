@@ -17,7 +17,15 @@ public partial class MyDbContext : DbContext
 
     public virtual DbSet<Admin> Admins { get; set; }
 
+    public virtual DbSet<Comment> Comments { get; set; }
+
     public virtual DbSet<Contact> Contacts { get; set; }
+
+    public virtual DbSet<Like> Likes { get; set; }
+
+    public virtual DbSet<Post> Posts { get; set; }
+
+    public virtual DbSet<Reply> Replies { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
 
@@ -59,6 +67,28 @@ public partial class MyDbContext : DbContext
                 .HasColumnName("username");
         });
 
+        modelBuilder.Entity<Comment>(entity =>
+        {
+            entity.HasKey(e => e.CommentId).HasName("PK__Comments__C3B4DFAA3935C667");
+
+            entity.Property(e => e.CommentId).HasColumnName("CommentID");
+            entity.Property(e => e.CreateDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("createDate");
+            entity.Property(e => e.PostId).HasColumnName("PostID");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Post).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.PostId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Comments__PostID__5812160E");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Comments)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Comments__UserID__59063A47");
+        });
+
         modelBuilder.Entity<Contact>(entity =>
         {
             entity.HasKey(e => e.ContactId).HasName("PK__Contacts__5C66259B1F08A537");
@@ -73,6 +103,64 @@ public partial class MyDbContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .HasColumnName("name");
+        });
+
+        modelBuilder.Entity<Like>(entity =>
+        {
+            entity.HasKey(e => e.LikeId).HasName("PK__Likes__4FC592DB84D7B1D3");
+
+            entity.HasIndex(e => new { e.UserId, e.PostId }, "UC_UserPost").IsUnique();
+
+            entity.Property(e => e.LikeId).HasColumnName("likeId");
+            entity.Property(e => e.Flag).HasDefaultValue(true);
+
+            entity.HasOne(d => d.Post).WithMany(p => p.Likes)
+                .HasForeignKey(d => d.PostId)
+                .HasConstraintName("FK__Likes__PostId__5535A963");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Likes)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Likes__UserId__5441852A");
+        });
+
+        modelBuilder.Entity<Post>(entity =>
+        {
+            entity.HasKey(e => e.PostId).HasName("PK__Posts__AA12601840EADF9C");
+
+            entity.Property(e => e.IsAccept)
+                .HasDefaultValue(false)
+                .HasColumnName("isAccept");
+            entity.Property(e => e.StoryContent).HasColumnType("ntext");
+            entity.Property(e => e.StoryDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Posts)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Posts__UserId__5070F446");
+        });
+
+        modelBuilder.Entity<Reply>(entity =>
+        {
+            entity.HasKey(e => e.ReplyId).HasName("PK__Reply__C25E460940F28179");
+
+            entity.ToTable("Reply");
+
+            entity.Property(e => e.CommentId).HasColumnName("CommentID");
+            entity.Property(e => e.CreateDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("createDate");
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Comment).WithMany(p => p.Replies)
+                .HasForeignKey(d => d.CommentId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Reply__CommentID__5CD6CB2B");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Replies)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Reply__UserID__5DCAEF64");
         });
 
         modelBuilder.Entity<Service>(entity =>

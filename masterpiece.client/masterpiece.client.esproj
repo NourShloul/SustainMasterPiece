@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="src\app\Admin\" />
     <Folder Include="src\app\BehaviorSubject\" />
+    <Folder Include="src\app\Blog\" />
     <Folder Include="src\app\URLservices\" />
   </ItemGroup>
 </Project>

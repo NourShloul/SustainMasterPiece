@@ -20,6 +20,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { SuberviceComponent } from './subervice/subervice.component';
 import { ServiceRequestComponent } from './service-request/service-request.component';
+import { AddpostComponent } from './Blog/addpost/addpost.component';
+import { PostCommentsComponent } from './Blog/post-comments/post-comments.component';
+import { AllPostComponent } from './Blog/all-post/all-post.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
     ProfileComponent,
     EditProfileComponent,
     SuberviceComponent,
-    ServiceRequestComponent
+    ServiceRequestComponent,
+    AddpostComponent,
+    PostCommentsComponent,
+    AllPostComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -57,7 +63,11 @@ import { ServiceRequestComponent } from './service-request/service-request.compo
       { path: 'EditProfile/:id', component: EditProfileComponent },
       {path : "services", component : ServicesComponent},
       { path: "subServices/:id", component: SuberviceComponent },
-      { path: "serviceRequest/:id", component: ServiceRequestComponent }
+      { path: "serviceRequest/:id", component: ServiceRequestComponent },
+      //////////////Blog////////////////
+      { path: "AddPost", component: AddpostComponent },
+      { path: 'allposts', component: AllPostComponent },
+      { path: 'postcomments/:id', component: PostCommentsComponent },
 
 
 

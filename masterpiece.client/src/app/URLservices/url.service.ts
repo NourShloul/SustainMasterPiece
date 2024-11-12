@@ -60,4 +60,53 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/Request/getServiceRequestByUserId/${id}`)
   }
 
+  ////////////////////////Blog//////////////////
+
+  Addnewpost(id: any, data: any): Observable<any> {
+    return this.http.post<any>(`${ this.staticData }/Blog/AddPosts/${id}`, data);
+  }
+
+  GetAllPosts(): Observable<any> {
+
+    return this.http.get<any>(`${this.staticData}/Blog/GetAllPosts`);
+  }
+  GetPostDetails(postId: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Blog/PostDetailsById/${postId}`);
+  }
+  GetCommentByPostId(postId: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Blog/GetAllComment/${postId}`);
+  }
+  AddnewComment(postid: any, data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Blog/AddComment/${postid}`,data);
+  }
+  AddreplayoneComment(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData }/Blog/ReplayOnComment`, data);
+  }
+  GetAllreplaybycommentid(commentid: any): Observable<any> {
+    return this.http.get<any>(`${this.staticData }/Blog/GetAllReplyByCommentId/${ commentid }`);
+  }
+
+  addLike(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Blog/addLike`, data);
+  }
+  ////////////Admin/////////////
+  UpdateTestimonial(id: any): Observable<any> {
+    return this.http.put(`${this.staticData }/Blog/AcceptPostById/${ id }`, {})
+  }
+
+  deleteTestimonial(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Blog/DeletePost/${id}`)
+  }
+
+  GetAllTestimonialToAccept(): Observable<any> {
+    return this.http.get<any>(`${this.staticData}/Blog/postnotaccepted`);
+  }
+
+  GetTestimonial(): Observable<any> {
+    return this.http.get<any>(`${this.staticData }/Blog/GetAllAcceptedPost`);
+
+  }
+
+
 }

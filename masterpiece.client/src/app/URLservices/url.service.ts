@@ -33,7 +33,7 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/User/getAllUser`);
   }
 
-  ////////////////////////    Service in User + Admin//////////////////////////////
+  ////////////////////////    Service in User + Admin   //////////////////////////////
   getAllServices(): Observable<any> {
     return this.http.get<any>(`${this.staticData}/Service/Service/GetAllServices`)
   }
@@ -55,12 +55,25 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/Subservice/Subervices/GetSubserviceByServiceId/${id}`)
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////
-
+  ////////////////////////     Subservice in User + Admin   /////////////////////////////////
   getAllSubservices(): Observable<any> {
 
     return this.http.get<any>(`${this.staticData}/Subservice/Subservice/GetAllSubservices`)
   }
 
+  CreateSubservice(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Subservice/Subservices/CreateSubservice`, data)
+  }
+
+  UpdateSubservices(id: any): Observable<any> {
+    return this.http.put(`${this.staticData}/Subservice/Subservices/UpdateSubservice/${id}`, {})
+  }
+
+  deleteSubservice(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Subservice/Subservices/DeleteSubservice/${id}`)
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////
   CreateServiceRequest(data: any): Observable<any> {
     return this.http.post<any>(`${this.staticData}/Request/createServiceRequest`,data)
   }
@@ -107,7 +120,7 @@ export class URLService {
     return this.http.put(`${this.staticData }/Blog/AcceptPostById/${ id }`, {})
   }
 
-  deleteTestimonial(id: any): Observable<any> {
+  deletePost(id: any): Observable<any> {
 
     return this.http.delete<any>(`${this.staticData}/Blog/DeletePost/${id}`)
   }
@@ -126,6 +139,10 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/Project/Project/GetAllProjects`)
   }
 
+  deleteProject(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Blog/DeletePost/${id}`)
+  }
 
   ///////////////contact////////////////////////////////
   addContact(data: any): Observable<any> {

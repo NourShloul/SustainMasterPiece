@@ -30,6 +30,8 @@ import { AllSubservicesComponent } from './Admin/all-subservices/all-subservices
 import { AllRequestsComponent } from './Admin/all-requests/all-requests.component';
 import { AddServiceComponent } from './Admin/add-service/add-service.component';
 import { UpdateServiceComponent } from './Admin/update-service/update-service.component';
+import { AllProjectsComponent } from './Admin/all-projects/all-projects.component';
+import { AllPostsComponent } from './Admin/all-posts/all-posts.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { UpdateServiceComponent } from './Admin/update-service/update-service.co
     AllSubservicesComponent,
     AllRequestsComponent,
     AddServiceComponent,
-    UpdateServiceComponent
+    UpdateServiceComponent,
+    AllProjectsComponent,
+    AllPostsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -89,8 +93,10 @@ import { UpdateServiceComponent } from './Admin/update-service/update-service.co
         path: 'Admin', component: DashboardComponent, children: [
           { path: 'AllUsers', component: AllUsersComponent },
           { path: 'AllService', component: AllServicesComponent },
+          { path: 'AllSubservice', component: AllSubservicesComponent },
           { path: 'AddService', component: AddServiceComponent },
-
+          { path: 'AllProject', component: AllProjectsComponent },
+          { path: 'AllPost', component: AllPostsComponent }
 
 
 

@@ -3,29 +3,29 @@ import { URLService } from '../../URLservices/url.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-all-subservices',
-  templateUrl: './all-subservices.component.html',
-  styleUrl: './all-subservices.component.css'
+  selector: 'app-all-projects',
+  templateUrl: './all-projects.component.html',
+  styleUrl: './all-projects.component.css'
 })
-export class AllSubservicesComponent {
+export class AllProjectsComponent {
   servicesArray: any
   ngOnInit() {
-    this.getAllSubservices()
+    this.getAllProjects()
   }
 
   constructor(private _ser: URLService) { }
 
-  getAllSubservices() {
-    this._ser.getAllSubservices().subscribe((data) => {
+  getAllProjects() {
+    this._ser.getAllProjects().subscribe((data) => {
       this.servicesArray = data
     })
   }
 
-  deleteSubservice(id: any) {
+  deleteProject(id: any) {
     // عرض نافذة التأكيد
     Swal.fire({
       title: 'Are you sure?',
-      text: 'Do you want to delete this subservice? This action cannot be undone!',
+      text: 'Do you want to delete this Project? This action cannot be undone!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
@@ -33,20 +33,20 @@ export class AllSubservicesComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         // تنفيذ عملية الحذف إذا تم التأكيد
-        this._ser.deleteSubservice(id).subscribe(() => {
+        this._ser.deleteProject(id).subscribe(() => {
           Swal.fire({
             icon: 'success',
             title: 'Deleted!',
-            text: 'The subservice has been deleted successfully.',
+            text: 'The project has been deleted successfully.',
             confirmButtonText: 'OK'
           });
-          this.getAllSubservices();
+          this.getAllProjects();  // تحديث قائمة الصالات بعد الحذف
         },
           (error) => {
             Swal.fire({
               icon: 'error',
               title: 'Error!',
-              text: 'There was an error deleting the subservice.',
+              text: 'There was an error deleting the project.',
               confirmButtonText: 'OK'
             });
           });

@@ -23,9 +23,6 @@ namespace MasterPiece.Server.Controllers
             return Ok(Con);
         }
 
-
-
-
         [HttpGet("GetByDesc")]
         public IActionResult GetContact()
         {

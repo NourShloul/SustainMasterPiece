@@ -33,15 +33,28 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/User/getAllUser`);
   }
 
-
+  ////////////////////////    Service in User + Admin//////////////////////////////
   getAllServices(): Observable<any> {
     return this.http.get<any>(`${this.staticData}/Service/Service/GetAllServices`)
   }
 
+  CreateService(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/Service/Services/CreateServices`, data)
+  }
+
+  UpdateServices(id: any): Observable<any> {
+    return this.http.put(`${this.staticData}/Service/Services/UpdateServices/${id}`, {})
+  }
+
+  deleteService(id: any): Observable<any> {
+
+    return this.http.delete<any>(`${this.staticData}/Service/Services/DeleteService/${id}`)
+  }
+  
   getAllSubservicesByServiceId(id :any): Observable<any> {
     return this.http.get<any>(`${this.staticData}/Subservice/Subervices/GetSubserviceByServiceId/${id}`)
   }
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////
 
   getAllSubservices(): Observable<any> {
 

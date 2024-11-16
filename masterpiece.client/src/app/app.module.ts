@@ -24,6 +24,12 @@ import { AddpostComponent } from './Blog/addpost/addpost.component';
 import { PostCommentsComponent } from './Blog/post-comments/post-comments.component';
 import { AllPostComponent } from './Blog/all-post/all-post.component';
 import { ProjectComponent } from './project/project.component';
+import { AllUsersComponent } from './Admin/all-users/all-users.component';
+import { AllServicesComponent } from './Admin/all-services/all-services.component';
+import { AllSubservicesComponent } from './Admin/all-subservices/all-subservices.component';
+import { AllRequestsComponent } from './Admin/all-requests/all-requests.component';
+import { AddServiceComponent } from './Admin/add-service/add-service.component';
+import { UpdateServiceComponent } from './Admin/update-service/update-service.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,13 @@ import { ProjectComponent } from './project/project.component';
     AddpostComponent,
     PostCommentsComponent,
     AllPostComponent,
-    ProjectComponent
+    ProjectComponent,
+    AllUsersComponent,
+    AllServicesComponent,
+    AllSubservicesComponent,
+    AllRequestsComponent,
+    AddServiceComponent,
+    UpdateServiceComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -72,6 +84,20 @@ import { ProjectComponent } from './project/project.component';
       { path: 'postcomments/:id', component: PostCommentsComponent },
       /////////////Project//////////////
       { path: 'project', component: ProjectComponent },
+
+      {
+        path: 'Admin', component: DashboardComponent, children: [
+          { path: 'AllUsers', component: AllUsersComponent },
+          { path: 'AllService', component: AllServicesComponent },
+          { path: 'AddService', component: AddServiceComponent },
+
+
+
+
+
+
+        ]
+      }
 
 
 

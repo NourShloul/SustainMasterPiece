@@ -5,7 +5,7 @@
   <input type="text" class="form-control" placeholder="Search by name">
 </div>
 <div>
-  <button class="theme_btn">Add new project</button>
+  <button class="theme_btn"><a routerLink="/dashboard/addproject">Add new project</a></button>
 </div>
 
 <br />
@@ -24,12 +24,31 @@
     <tr *ngFor="let item of servicesArray" class="align-middle text-center">
       <td>{{item.projectId}}</td>
       <td>
-        <img class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7072{{item.image}}" alt="User Image" />
+        <img class="" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7270{{item.image}}" alt="User Image" />
       </td>
       <td>{{item.projectName}}</td>
       <td>{{item.description}}</td>
       <td>
-        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-primary" (click)="openModal(item)">Edit</button>
+
+        <!-- Popup Modal -->
+        <div class="modal" [ngClass]="{'show': isModalOpen}" [style.display]="isModalOpen ? 'block' : 'none'">
+          <div class="modal-content">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <h2>Edit Data</h2>
+
+            <form (ngSubmit)="onSubmit()">
+              <label for="name">Name:</label>
+              <input type="text" id="name" [(ngModel)]="formData.name" name="name" required />
+              <label for="Description">Description:</label>
+              <input type="text" id="Description" [(ngModel)]="formData.Description" name="Description" required />
+              <label for="image">Image:</label>
+              <input type="file" id="image" (change)="onFileSelected($event)" />
+              <button type="submit" class="btn btn-success">Save</button>
+            </form>
+          </div>
+        </div>
+
         <button class="btn btn-danger" (click)="deleteProject(item.projectId)">Delete</button>
       </td>
 

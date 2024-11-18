@@ -5,7 +5,7 @@
   <input type="text" class="form-control" placeholder="Search by name">
 </div>
 <div>
-  <button class="theme_btn">Add new project</button>
+  <button class="theme_btn"><a routerLink="/dashboard/addSubservice">Add new Subservice</a></button>
 </div>
 
 <br />
@@ -26,7 +26,7 @@
       <td>{{item.subserviceId}}</td>
       <td>{{item.serviceId}}</td>
       <td>
-        <img class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7072{{item.image}}" alt="User Image" />
+        <img class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7270{{item.image}}" alt="User Image" />
       </td>
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>

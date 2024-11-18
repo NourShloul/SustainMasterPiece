@@ -79,7 +79,7 @@ namespace MasterPiece.Server.Controllers
                 return BadRequest();
 
             }
-            var service = new Service
+            var service = new Models.Service
             {
                 Name = request.Name,
                 Description = request.Description

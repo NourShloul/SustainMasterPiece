@@ -135,6 +135,19 @@ namespace MasterPiece.Server.Controllers
             return Ok(new { message = "Profile updated successfully" });
         }
 
+        [HttpPost("LoginAdmin")]
+        public IActionResult Login([FromForm] UserAdminDTO user)
+        {
+            var existingUser = _db.Admins.Where(a => a.Email == user.Email && a.Password == user.Password).FirstOrDefault();
+
+            if (existingUser == null)
+            {
+                return BadRequest("Invalid email or password.");
+            }
+
+            return Ok(new { UserId = existingUser.AdminId, message = "Login successful" });
+        }
+
         private byte[] HashPassword(string password, out byte[] salt)
         {
             using (var hmac = new System.Security.Cryptography.HMACSHA512())

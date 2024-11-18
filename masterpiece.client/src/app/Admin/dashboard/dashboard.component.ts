@@ -18,7 +18,7 @@ export class DashboardComponent {
     if (this.openedDropdowns.has(menuId)) {
       this.openedDropdowns.delete(menuId);
     } else {
-      this.openedDropdowns.clear(); // أغلق جميع القوائم المنسدلة الأخرى
+      this.openedDropdowns.clear();
       this.openedDropdowns.add(menuId);
     }
   }
@@ -30,7 +30,7 @@ export class DashboardComponent {
     this.behaviorSubjectService.userId$.subscribe(userId => {
       this.isLoggedIn = !!userId;
       if (!this.isLoggedIn) {
-        this._router.navigate(['/admin']);
+        this._router.navigate(['/dashboard']);
       }
     });
   }

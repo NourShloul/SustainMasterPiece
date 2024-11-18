@@ -26,16 +26,17 @@
       <td>{{item.storyContent}}</td>
       <td>{{item.storyDate}}</td>
       <td>
-        <img class="rounded-circle" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7072{{item.storyPhoto}}" alt="User Image" />
+        <img class="" style="height: 100px; width: 100px; object-fit: cover;" src="https://localhost:7270{{item.storyPhoto}}" alt="User Image" />
       </td>
       <td>{{item.user.userName}}</td>
       <td>{{item.likesCount}}</td>
       <td>{{item.commentcount}}</td>
       <td>
         <button class="btn btn-warning">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger" (click)="deleteContactById(item.postId)">Delete</button>
       </td>
 
     </tr>
   </tbody>
 </table>
+

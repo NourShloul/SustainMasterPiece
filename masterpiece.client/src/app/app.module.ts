@@ -32,6 +32,11 @@ import { AddServiceComponent } from './Admin/add-service/add-service.component';
 import { UpdateServiceComponent } from './Admin/update-service/update-service.component';
 import { AllProjectsComponent } from './Admin/all-projects/all-projects.component';
 import { AllPostsComponent } from './Admin/all-posts/all-posts.component';
+import { EditProjectComponent } from './Admin/edit-project/edit-project.component';
+import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { AddProjectComponent } from './Admin/add-project/add-project.component';
+import { AddSubserviceComponent } from './Admin/add-subservice/add-subservice.component';
+import { NotAcceptPostComponent } from './Admin/not-accept-post/not-accept-post.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +67,12 @@ import { AllPostsComponent } from './Admin/all-posts/all-posts.component';
     AddServiceComponent,
     UpdateServiceComponent,
     AllProjectsComponent,
-    AllPostsComponent
+    AllPostsComponent,
+    EditProjectComponent,
+    AdminLoginComponent,
+    AddProjectComponent,
+    AddSubserviceComponent,
+    NotAcceptPostComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -88,15 +98,20 @@ import { AllPostsComponent } from './Admin/all-posts/all-posts.component';
       { path: 'postcomments/:id', component: PostCommentsComponent },
       /////////////Project//////////////
       { path: 'project', component: ProjectComponent },
+      { path: 'admin', component: AdminLoginComponent },
 
       {
-        path: 'Admin', component: DashboardComponent, children: [
+        path: 'dashboard', component: DashboardComponent, children: [
           { path: 'AllUsers', component: AllUsersComponent },
           { path: 'AllService', component: AllServicesComponent },
           { path: 'AllSubservice', component: AllSubservicesComponent },
           { path: 'AddService', component: AddServiceComponent },
           { path: 'AllProject', component: AllProjectsComponent },
-          { path: 'AllPost', component: AllPostsComponent }
+          { path: 'AllPost', component: AllPostsComponent },
+          { path: 'addproject', component: AddProjectComponent },
+          { path: 'addService', component: AddServiceComponent },
+          { path: 'addSubservice', component: AddServiceComponent },
+          { path: 'notAcceptPost', component: NotAcceptPostComponent },
 
 
 

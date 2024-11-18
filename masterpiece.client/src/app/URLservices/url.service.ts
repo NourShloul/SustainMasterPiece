@@ -163,4 +163,14 @@ export class URLService {
     return this.http.get<any>(`${this.staticData}/Contact/latest`)
   }
 
+  ////////////////////////////////////admin login/////////////
+  LoginAdmin(data: any): Observable<any> {
+    return this.http.post<any>(`${this.staticData}/User/LoginAdmin`, data)
+  }
+  updateProject(id: any, formData: FormData): Observable<any> {
+    return this.http.put<any>(`${this.staticData}/Project/Project/UpdateProject/${id}`, formData);
+  }
+  addProject(form: FormData): Observable<any> {
+    return this.http.post(`${this.staticData}/Project/Project/CreateProject`,form)
+  }
 }

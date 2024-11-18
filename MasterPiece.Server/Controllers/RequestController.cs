@@ -1,5 +1,6 @@
 ﻿using MasterPiece.Server.DTOs;
 using MasterPiece.Server.Models;
+using MasterPiece.Server.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,11 @@ namespace MasterPiece.Server.Controllers
     public class RequestController : ControllerBase
     {
         private readonly MyDbContext _db;
-
-        public RequestController(MyDbContext db)
+        private readonly EmailServices _emailServices;
+        public RequestController(MyDbContext db , EmailServices emailServices)
         {
             _db = db;
+            _emailServices = emailServices;
         }
 
         // POST: api/ServiceRequests
@@ -41,6 +43,24 @@ namespace MasterPiece.Server.Controllers
             }
 
             _db.SaveChanges();
+
+
+            // send Email
+
+            var requestId = _db.Users.Where(x => x.UserId == request.UserId).FirstOrDefault();
+
+            string approvalSubject = "Congratulations ..!!";
+            string approvalBody = $@"
+                   <p>Dear {requestId.UserName},</p>
+                   <p>Thank you for using our service. </p>
+                   <p> We Just want you to know that your application approved </p>
+                   <br>
+                   <p>Best Regards,</p>
+                   <p>The Admin</p>
+               ";
+
+            // هوووون لازم يكون في الايميل
+            _emailServices.SendEmailRAsync(requestId.Email, approvalSubject, approvalBody);
 
             return Ok(request);
         }

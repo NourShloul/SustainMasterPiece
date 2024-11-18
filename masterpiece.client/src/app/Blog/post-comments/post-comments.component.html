@@ -4,7 +4,7 @@
     <div class="row g-6">
       <div class="col-lg-8" *ngFor="let item of postdetails">
         <div class="service-details-banner mb-lg-10 mb-md-8 mb-6">
-          <img class="w-100 radius-16 sizeimag" src="https://localhost:7001{{item.storyPhoto}}"
+          <img class="w-100 radius-16 sizeimag" src="https://localhost:7270{{item.storyPhoto}}"
                alt="service details banner">
         </div>
         <div class="service-details-content d-grid gap-lg-6 gap-4 mb-lg-10 mb-md-8 mb-6">
@@ -61,7 +61,7 @@
                   <i class="ph-fill ph-reddit-logo"></i> Reddit
                 </a>
                 <a href="#" class="share-option" data-platform="whatsapp">
-                  <i class="ph-fill ph-whatsapp-logo"></i> WhatsApp
+                  <i class="ph-fill fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="#" class="share-option" data-platform="telegram">
                   <i class="ph-fill ph-telegram-logo"></i> Telegram
@@ -104,7 +104,7 @@
               <div class="d-flex align-items-center justify-content-between gap-lg-4 gap-2 flex-wrap">
                 <div class="d-flex align-items-center gap-lg-4 gap-2">
                   <div class="commenter icon-100px">
-                    <img class="w-100" src="https://localhost:7001/api/Images/getImages/{{item.user.image}}" alt="author">
+                    <img class="w-100" src="https://localhost:7270/api/Images/getImages/{{item.user.image}}" alt="author">
                   </div>
                   <div class="d-grid gap-1">
                     <span class="text-n20 font-instrument fw-bold">{{item.user.userName}}</span>
@@ -129,7 +129,7 @@
                 <div class="single-reply mb-2" *ngFor="let reply of replays" style="border:1px solid gray;border-radius:10px">
                   <div class="d-flex align-items-center gap-2">
                     <div class="commenter icon-100px">
-                      <img class="w-50 ms-10" src="https://localhost:7001/api/Images/getImages/{{reply.image}}" alt="author">
+                      <img class="w-50 ms-10" src="https://localhost:7270{{reply.image}}" alt="author">
                     </div>
                     <span class="text-n20 font-instrument fw-bold">{{reply.userName}}</span>
                     <span class="text-n10 font-instrument fw-normal">{{reply.createDate | date: 'yyyy/MM/dd hh:mm a'}}</span>
@@ -155,7 +155,7 @@
 
 
       </div>
-      <div class="col-lg-4">
+      <!--<div class="col-lg-4">
 
         <div class="sidebar-search-form p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
           <form action="#"
@@ -166,9 +166,9 @@
               <span><i class="ph ph-magnifying-glass"></i></span>
             </button>
           </form>
-        </div>
+        </div>-->
         <!-- service list start -->
-        <div class="service-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
+        <!--<div class="service-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
           <h5 class="font-otomanopee fw-normal mb-lg-6 mb-4">
             <span class="text-primary"><i class="ph-fill ph-paw-print"></i></span>
             Our Services
@@ -217,10 +217,10 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div>-->
         <!-- service list end -->
         <!-- recent post list start -->
-        <div class="recent-post-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
+        <!--<div class="recent-post-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
           <h5 class="font-otomanopee fw-normal mb-lg-6 mb-4">
             <span class="text-primary"><i class="ph-fill ph-paw-print"></i></span>
             Recent Post
@@ -269,10 +269,10 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div>-->
         <!-- recent post list end -->
         <!-- tag list start -->
-        <div class="tag-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
+        <!--<div class="tag-list p-xl-8 p-md-6 p-4 bg-white border n20-1-border radius-16 mb-lg-10 mb-md-8 mb-6">
           <h5 class="font-otomanopee fw-normal mb-lg-6 mb-4">
             <span class="text-primary"><i class="ph-fill ph-paw-print"></i></span>
             Tags
@@ -327,9 +327,9 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div>-->
         <!-- tag list end -->
-      </div>
+      <!--</div>-->
     </div>
   </div>
 

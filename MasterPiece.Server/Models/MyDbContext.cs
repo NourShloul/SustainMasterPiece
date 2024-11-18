@@ -241,6 +241,7 @@ public partial class MyDbContext : DbContext
             entity.HasIndex(e => e.Email, "UQ__Users__A9D10534538F83C6").IsUnique();
 
             entity.Property(e => e.Email).HasMaxLength(250);
+            entity.Property(e => e.IsAdmin).HasDefaultValue(false);
             entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.Password).HasMaxLength(255);
             entity.Property(e => e.UserName).HasMaxLength(255);

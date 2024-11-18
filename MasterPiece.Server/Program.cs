@@ -1,4 +1,5 @@
 using MasterPiece.Server.Models;
+using MasterPiece.Server.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
+
+
+builder.Services.AddScoped<EmailServices>();
+builder.Services.AddTransient<EmailServices>();
 
 //builder.Services.AddTransient<EmailService>();
 builder.Services.AddControllers();

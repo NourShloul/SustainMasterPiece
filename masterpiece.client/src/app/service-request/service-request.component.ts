@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { URLService } from '../URLservices/url.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-request',
@@ -12,7 +14,7 @@ export class ServiceRequestComponent {
   subservices: any;
   selectedSubserviceIds: any[] = []; // Initialize as an empty array
 
-  constructor(private _ser: URLService) { }
+  constructor(private _ser: URLService, private _router: Router) { }
 
   ngOnInit() {
     this.userId = Number(localStorage.getItem("userId"));
@@ -42,9 +44,34 @@ export class ServiceRequestComponent {
     form.append("UserId", this.userId);
 
     this._ser.CreateServiceRequest(form).subscribe(() => {
-      alert("Form submitted successfully");
-    });
-  }
+      Swal.fire({
+        icon: 'success',
+        title: 'Form submitted successfully',
+        text: 'Your Request has been Sent',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this._router.navigate(['/services']);
+        }
+      });
+
+      console.log("Response:", form);
+    },
+      (error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to submit your request',
+          text: 'An error occurred while submitting your Request. Please try again.',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+
+        console.error("Error:", error);
+      }
+    );
+  
+}
 
   onSubserviceClick(event: any, subserviceId: number) {
     if (event.target.checked) {

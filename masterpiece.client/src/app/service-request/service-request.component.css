@@ -1,19 +1,89 @@
-.gradient-custom {
-  /* fallback for old browsers */
-  background: #f093fb;
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1))
+/* General Section Styling */
+.registration_form_section {
+  padding: 60px 15px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
+  .registration_form_section .tittle {
+    margin-bottom: 30px;
+  }
+
+    .registration_form_section .tittle h2 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .registration_form_section .tittle p {
+      font-size: 16px;
+      color: #777;
+    }
+
+  /* Form Styling */
+  .registration_form_section .form-group {
+    margin-bottom: 25px;
+  }
+
+  .registration_form_section .form-control {
+    background-color: #f8f9fa !important;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+
+    .registration_form_section .form-control:focus {
+      border-color: #ff5722;
+      box-shadow: 0 0 8px rgba(255, 87, 34, 0.5);
+      outline: none;
+    }
+
+  /* Checkboxes */
+  .registration_form_section .form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .registration_form_section .form-check-input {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+
+  .registration_form_section .form-check-label {
+    font-size: 16px;
+    color: #555;
+  }
+
+  /* Submit Button */
+  .registration_form_section .theme_btn {
+    background-color: #ff5722 !important;
+    color: #fff !important;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+  }
+
+    .registration_form_section .theme_btn:hover {
+      background-color: #e64a19 !important;
+      text-decoration: none;
+    }
+
+/* Decorative Shapes */
+.skye_img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
 }
 
-.card-registration .select-arrow {
-  top: 13px;
+.shap_style {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  z-index: -1;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { URLService } from '../../URLservices/url.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-addpost',
@@ -44,13 +45,28 @@ export class AddpostComponent {
     // استدعاء الخدمة لإرسال البيانات إلى API
     this._src.Addnewpost(this.userId, form).subscribe(
       () => {
-        alert("Post added successfully");
+        Swal.fire({
+          icon: 'success',
+          title: 'Post added successfully',
+          text: 'Your Post has been Sent to Admin',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this._router.navigate(['/allposts']);
+          }
+        });
         console.log("Response:", form);
-        this._router.navigate(['/allposts']);
-
       },
       (error) => {
-        alert("Failed to add post");
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to create your post',
+          text: 'An error occurred while creating your Post. Please try again.',
+          confirmButtonColor: '#d33',
+          confirmButtonText: 'OK'
+        });
+
         console.error("Error:", error);
       }
     );

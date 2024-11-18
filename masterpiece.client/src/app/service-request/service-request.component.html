@@ -1,23 +1,20 @@
-<!-- REGISTRATION FORM SECTION -->
 <section class="registration_form_section ps_2 ps_3 mb-80">
-
+  <figure class="wow zoomIn">
+    <img src="assets/images/studio.png" alt="" class="user-img">
+  </figure>
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-lg-8 offset-lg-2">
-        <!-- Section Title -->
-        <div class="title text-center mb-5">
+        <div class="tittle text-center">
           <h2>Registration Form</h2>
           <p>Please fill out the form to register.</p>
         </div>
-
-        <!-- Form Start -->
-        <form class="registration_form" #RequestnForm="ngForm" (ngSubmit)="onRequestClick(RequestnForm.value)">
-
+        <form class="solve_from" #RequestnForm="ngForm" (ngSubmit)="onRequestClick(RequestnForm.value)">
           <!-- Full Name Input -->
           <div class="form-group">
             <input type="text" name="FullName" class="form-control" [value]="userData.userName" disabled>
             <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <!-- SVG path if needed -->
+              <!-- Optional SVG Path -->
             </svg>
           </div>
 
@@ -25,40 +22,33 @@
           <div class="form-group">
             <input type="email" name="Email" class="form-control" [value]="userData.email" disabled>
             <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <!-- SVG path if needed -->
+              <!-- Optional SVG Path -->
             </svg>
           </div>
 
-          <!-- Phone Number Input -->
+          <!-- Additional Inputs -->
           <div class="form-group">
             <input type="tel" name="PhoneNumber" class="form-control" placeholder="Phone Number" required ngModel [value]="userData.phoneNum">
           </div>
-
-          <!-- Phone Number Input -->
           <div class="form-group">
-            <input type="tel" name="Budget" class="form-control" placeholder="Budget" required ngModel>
+            <input type="text" name="Budget" class="form-control" placeholder="Budget" required ngModel>
           </div>
-
-          <!-- Phone Number Input -->
           <div class="form-group">
-            <input type="tel" name="Description" class="form-control" placeholder="Description" required ngModel>
+            <textarea name="Description" class="form-control" placeholder="Description" rows="3" required ngModel></textarea>
           </div>
-
-          <!-- Phone Number Input -->
           <div class="form-group">
-            <input type="tel" name="CompanyName" class="form-control" placeholder="CompanyName" required ngModel>
+            <input type="text" name="CompanyName" class="form-control" placeholder="Company Name" required ngModel>
           </div>
-
-
 
           <!-- Subjects Checkboxes -->
           <div class="form-group">
-            <label>Select Subjects</label>
+            <label class="d-block mb-3">Select Subjects</label>
             <div class="form-check" *ngFor="let item of subservices">
-              <input type="checkbox" class="form-check-input" id="subject1" name="Subjects" value="{{item.subserviceId}}"  (change)="onSubserviceClick($event, item.subserviceId)">
-              <label class="form-check-label" for="subject1">{{item.name}}</label>
+              <input type="checkbox" class="form-check-input" id="subject{{item.subserviceId}}" name="Subjects" value="{{item.subserviceId}}" (change)="onSubserviceClick($event, item.subserviceId)">
+              <label class="form-check-label" for="subject{{item.subserviceId}}">
+                {{item.name}}
+              </label>
             </div>
-
           </div>
 
           <!-- Submit Button -->
@@ -67,15 +57,10 @@
               <span>Submit</span>
             </button>
           </div>
-
         </form>
-        <!-- Form End -->
-
       </div>
     </div>
   </div>
-
-  <!-- Optional decorative background shapes -->
   <figure class="wow zoomIn skye_img">
     <img src="assets/images/shap/skye-shap-2.png" alt="" class="shap_img">
   </figure>

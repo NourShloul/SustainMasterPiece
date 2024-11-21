@@ -31,8 +31,8 @@ export class AddProjectComponent {
     this._ser.addProject(form).subscribe(() => {
       Swal.fire({
         icon: 'success',
-        title: 'Gym Added Successfully!',
-        text: 'The gym has been added successfully.',
+        title: 'Project Added Successfully!',
+        text: 'The Project has been added successfully.',
         confirmButtonText: 'OK'
       });
     },

@@ -80,38 +80,44 @@
           <!-- Contact -->
           <li class="nav-item">
             <a routerLink="/dashboard/AllService" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
+              <i class="fs-4 bi-tools"></i>
               <span class="ms-1 d-none d-sm-inline">Services</span>
             </a>
           </li>
           <li class="nav-item">
             <a routerLink="/dashboard/AllSubservice" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
+              <i class="fs-4 bi-list-check"></i>
               <span class="ms-1 d-none d-sm-inline">Subservices</span>
             </a>
           </li>
           <li class="nav-item">
+            <a routerLink="/dashboard/AllRequest" class="nav-link text-white px-0 align-middle">
+              <i class="fs-4 bi-tools"></i>
+              <span class="ms-1 d-none d-sm-inline">Requests</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a routerLink="/dashboard/AllProject" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
+              <i class="fs-4 bi-folder"></i>
               <span class="ms-1 d-none d-sm-inline">Projects</span>
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/dashboard/AllPost" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
-              <span class="ms-1 d-none d-sm-inline">Posts</span>
+            <a routerLink="/dashboard/notAcceptPost" class="nav-link text-white px-0 align-middle">
+              <i class="fs-4 bi-chat-text"></i>
+              <span class="ms-1 d-none d-sm-inline">Pending Posts</span>
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/dashboard/notAcceptPost" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
-              <span class="ms-1 d-none d-sm-inline">Posts</span>
+            <a routerLink="/dashboard/AllPost" class="nav-link text-white px-0 align-middle">
+              <i class="fs-4 bi-chat-text"></i>
+              <span class="ms-1 d-none d-sm-inline">Accepted Posts</span>
             </a>
           </li>
           <li class="nav-item">
             <a routerLink="/dashboard/AllUsers" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
-              <span class="ms-1 d-none d-sm-inline">Users</span>
+              <i class="fs-4 bi-people"></i>
+              <span class="ms-1 d-none d-sm-inline">Users Info</span>
             </a>
           </li>
 
@@ -119,10 +125,9 @@
           <br />
           <br />
           <br />
-
-          <li class="nav-item">
-            <a routerLink="/Login" class="nav-link text-white px-0 align-middle">
-              <i class="fs-4 bi-table"></i>
+          <li class="nav-item" *ngIf="adminEmnail">
+            <a (click)="logout()" routerLink="" style="color:aliceblue">
+              <i class="fs-4 bi-box-arrow-right"></i>
               <span class="ms-1 d-none d-sm-inline">Log out</span>
             </a>
           </li>

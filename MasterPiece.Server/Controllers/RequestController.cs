@@ -3,6 +3,7 @@ using MasterPiece.Server.Models;
 using MasterPiece.Server.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MasterPiece.Server.Controllers
 {
@@ -68,13 +69,30 @@ namespace MasterPiece.Server.Controllers
         [HttpGet("getServiceRequest")]
         public IActionResult GetServiceRequest()
         {
-            var request = _db.ServiceRequests.ToList();
-            if (request != null)
-            {
-                return Ok(request);
-            }
-            return NoContent();
+            var orders = _db.ServiceRequests
+                   .Include(cr => cr.User)
+                   .Include(cr => cr.Subservice)
+                   .ThenInclude(s => s.Service) 
+                   .AsEnumerable() 
+                   .Select((cr, index) => new
+                   {
+                       userid = cr.UserId, 
+                       OrderNumber = index + 1,
+                       Requestid = cr.RequestId, 
+                       Firstname = cr.User.UserName, 
+                       Subservicename = cr.Subservice.Name, 
+                       ServiceName = cr.Subservice.Service.Name, 
+                       Companyname = cr.CompanyName, 
+                       submittedAt = cr.SubmittedAt, 
+                       status = cr.Status, 
+                       budget = cr.Budget ,
+                       description = cr.Description
+                   })
+                   .ToList();
+
+            return Ok(orders);
         }
+
 
         [HttpGet("getServiceRequestByUserId/{id}")]
         public IActionResult GetServiceRequestByUserId(int id)
@@ -85,7 +103,25 @@ namespace MasterPiece.Server.Controllers
 
             }
 
-            var userReq = _db.ServiceRequests.Where(p => p.UserId == id).ToList();
+            var userReq = _db.ServiceRequests.Where(p => p.UserId == id).Include(cr => cr.User)
+                   .Include(cr => cr.Subservice)
+                   .ThenInclude(s => s.Service)
+                   .AsEnumerable()
+                   .Select((cr, index) => new
+                   {
+                       userid = cr.UserId,
+                       OrderNumber = index + 1,
+                       Requestid = cr.RequestId,
+                       Firstname = cr.User.UserName,
+                       Subservicename = cr.Subservice.Name,
+                       ServiceName = cr.Subservice.Service.Name,
+                       Companyname = cr.CompanyName,
+                       submittedAt = cr.SubmittedAt,
+                       status = cr.Status,
+                       budget = cr.Budget,
+                       description = cr.Description
+                   })
+                   .ToList();
 
             if (userReq != null)
             {
@@ -93,6 +129,16 @@ namespace MasterPiece.Server.Controllers
 
             }
             return NotFound();
+        }
+
+        [HttpPut("editorder/{id}")]
+        public IActionResult editorder(int id, StatusDTO DTO)
+        {
+            var edit = _db.ServiceRequests.Where(x => x.RequestId == id).FirstOrDefault();
+            edit.Status = DTO.Status;
+            _db.ServiceRequests.Update(edit);
+            _db.SaveChanges();
+            return Ok();
         }
 
     }

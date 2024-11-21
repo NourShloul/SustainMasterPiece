@@ -13,7 +13,7 @@
         <div class="card mb-4" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
           <div class="card-body text-center">
             <img [src]="user.image || 'assets/media/default-avatar.png'" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3">{{ user.userName || 'John Doe' }}</h5>
+            <h5 class="my-3">{{ user.userName || 'Nour Sustain' }}</h5>
 
             <button type="button" class="btn theme_btn" data-bs-toggle="modal" data-bs-target="#editProfileModal" routerLink="/EditProfile/{{user.userId}}">
               Edit Profile
@@ -92,36 +92,44 @@
         <!-- the list of userRequest -->
         <div class="row">
           <!-- Orders Table -->
+          <!-- Orders Table -->
           <div class="col-md-12 mb-4">
             <div class="card" style="border: 1px solid #ccc; border-radius: 10px; background-color: gainsboro;">
               <div class="card-body">
                 <h5 class="mb-3">Service Requests</h5>
-                <table class="table table-bordered" *ngIf="servicesArray && servicesArray.length">
-                  <thead>
-                    <tr>
-                      <th>ReqID</th>
-                      <th>SubserID</th>
-                      <th>Company Name</th>
-                      <th>Description</th>
-                      <th>Budget</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let item of servicesArray">
-                      <td>{{item.requestId}}</td>
-                      <td>{{item.subserviceId}}</td>
-                      <td>{{item.companyName}}</td>
-                      <td>{{item.description}}</td>
-                      <td>{{item.budget}}</td>
-                      <td>{{item.status}}</td>
-                      <!--<td><button class="btn btn-primary" (click)="showOrderDetails(order)">Details</button></td>-->
-                    </tr>
-                  </tbody>
-                </table>
+                <!-- Add table-responsive to make the table scrollable on smaller devices -->
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead class="table-light">
+                      <tr>
+                        <th>ReqID</th>
+                        <th>Service Name</th>
+                        <th>Subservice Name</th>
+                        <th>Company Name</th>
+                        <th>Description</th>
+                        <th>Budget</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of servicesArray">
+                        <td>{{item.orderNumber}}</td>
+                        <td>{{item.serviceName}}</td>
+                        <td>{{item.subservicename}}</td>
+                        <td>{{item.companyname}}</td>
+                        <td>{{item.description}}</td>
+                        <td>{{item.budget}}</td>
+                        <td>{{item.status}}</td>
+                        <!-- Uncomment the button below if needed -->
+                        <!-- <td><button class="btn btn-primary btn-sm" (click)="showOrderDetails(order)">Details</button></td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
 

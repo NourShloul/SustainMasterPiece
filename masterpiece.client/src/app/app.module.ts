@@ -72,7 +72,7 @@ import { NotAcceptPostComponent } from './Admin/not-accept-post/not-accept-post.
     AdminLoginComponent,
     AddProjectComponent,
     AddSubserviceComponent,
-    NotAcceptPostComponent
+    NotAcceptPostComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -105,13 +105,13 @@ import { NotAcceptPostComponent } from './Admin/not-accept-post/not-accept-post.
           { path: 'AllUsers', component: AllUsersComponent },
           { path: 'AllService', component: AllServicesComponent },
           { path: 'AllSubservice', component: AllSubservicesComponent },
-          { path: 'AddService', component: AddServiceComponent },
           { path: 'AllProject', component: AllProjectsComponent },
           { path: 'AllPost', component: AllPostsComponent },
           { path: 'addproject', component: AddProjectComponent },
           { path: 'addService', component: AddServiceComponent },
-          { path: 'addSubservice', component: AddServiceComponent },
+          { path: 'addSubservice', component: AddSubserviceComponent },
           { path: 'notAcceptPost', component: NotAcceptPostComponent },
+          { path: 'AllRequest', component: AllRequestsComponent },
 
 
 

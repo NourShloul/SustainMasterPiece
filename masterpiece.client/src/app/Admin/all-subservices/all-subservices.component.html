@@ -31,7 +31,36 @@
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>
       <td>
-        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-primary" (click)="openModal(item)">Edit</button>
+
+        <!-- Popup Modal -->
+        <div class="modal" [ngClass]="{'show': isModalOpen}" [style.display]="isModalOpen ? 'block' : 'none'">
+          <div class="modal-content" style="max-width: 80%; margin: 50px auto; padding: 20px; border-radius: 10px; background-color: gainsboro;">
+            <span class="close" (click)="closeModal()" style="cursor: pointer; font-size: 24px; color: #333; float: right;">&times;</span>
+            <h2 class="text-center mb-4">Edit Data</h2>
+
+            <form (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" id="name" [(ngModel)]="formData.name" name="name" class="form-control" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="Description" class="form-label">Description</label>
+                  <input type="text" id="Description" [(ngModel)]="formData.Description" name="Description" class="form-control" required />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" id="image" class="form-control" (change)="onFileSelected($event)" />
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn w-25" style="background-color: #e955fc; color: white;">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
         <button class="btn btn-danger" (click)="deleteSubservice(item.subserviceId)">Delete</button>
       </td>
 

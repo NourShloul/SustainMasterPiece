@@ -9,7 +9,7 @@ public partial class Project
 
     public string ProjectName { get; set; } = null!;
 
-    public string Description { get; set; } = null!;
+    public string? Description { get; set; }
 
     public string? Image { get; set; }
 }

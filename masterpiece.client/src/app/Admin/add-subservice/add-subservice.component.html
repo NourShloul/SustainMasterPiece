@@ -7,14 +7,21 @@
 
     <div class="row">
       <div class="col-md-6 mb-3">
+        <label for="ServiceName" class="form-label">Service</label>
+        <select id="ServiceName" name="serviceId" class="form-control" required="required" ngModel>
+          <option *ngFor="let service of services" [value]="service.serviceId">
+            {{ service.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
         <label for="Title" class="form-label">Subservice Name</label>
         <input type="text" id="Title" name="name" class="form-control" required="required" ngModel>
       </div>
-      <div class="col-md-6 mb-3">
-        <label for="Image" class="form-label">Service Image</label>
-        <input type="file" id="Image" name="image" class="form-control" required="required" (change)="changeImage($event)" ngModel>
-      </div>
-
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="Image" class="form-label">Service Image</label>
+      <input type="file" id="Image" name="image" class="form-control" required="required" (change)="changeImage($event)" ngModel>
     </div>
     <div class="mb-3">
       <label for="Description" class="form-label">Description</label>

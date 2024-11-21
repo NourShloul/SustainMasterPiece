@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { URLService } from '../../URLservices/url.service';
 import { Router } from '@angular/router';
-import { BehaviorSubjectService } from '../../BehaviorSubject/behavior-subject.service';
 import Swal from 'sweetalert2'; // Import SweetAlert
+import { BehaviorSubjectService } from '../../BehaviorSubject/behavior-subject.service';
+
 
 @Component({
   selector: 'app-admin-login',
@@ -19,7 +20,6 @@ export class AdminLoginComponent {
   ngOnInit() { }
 
   Login(data: any) {
-    debugger;
     const form = new FormData();
     for (let key in data) {
       form.append(key, data[key]);
@@ -30,15 +30,18 @@ export class AdminLoginComponent {
     this._ser.LoginAdmin(form).subscribe(
       (response) => {
         console.log("Response from LoginUser:", response);
+        localStorage.setItem("AdminEmail", response.email);
+
+        this._ser.userId.next(response.email)
         if (response.userId) {
-          this.behaviorSubjectService.setUserId(response.userId);
-          // localStorage.setItem('userId', response.userId); 
+          this.behaviorSubjectService.setUserId(response.userId);           
           Swal.fire({ // SweetAlert for success notification
             icon: 'success',
             title: 'Success',
             text: 'User Logged In Successfully'
           });
-          this._router.navigate(['/adminDashboard/AllUsers']);
+          this._router.navigate(['/dashboard']);
+        //  window.location.reload();
         } else {
           console.warn("User ID not found in response.");
           Swal.fire({ // SweetAlert for warning notification
@@ -55,6 +58,7 @@ export class AdminLoginComponent {
           title: 'Login Failed',
           text: 'Login failed: ' + (error.error.message || 'An error occurred.')
         });
+        
       }
     );
   }

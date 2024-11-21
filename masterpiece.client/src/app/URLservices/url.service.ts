@@ -39,11 +39,11 @@ export class URLService {
   }
 
   CreateService(data: any): Observable<any> {
-    return this.http.post<any>(`${this.staticData}/Service/Services/CreateServices`, data)
+    return this.http.post<any>(`${this.staticData}/Service/Services/CreateService`, data)
   }
 
-  UpdateServices(id: any): Observable<any> {
-    return this.http.put(`${this.staticData}/Service/Services/UpdateServices/${id}`, {})
+  UpdateServices(id: any, formData: FormData): Observable<any> {
+    return this.http.put(`${this.staticData}/Service/Services/UpdateService/${id}`, formData)
   }
 
   deleteService(id: any): Observable<any> {
@@ -65,8 +65,8 @@ export class URLService {
     return this.http.post<any>(`${this.staticData}/Subservice/Subservices/CreateSubservice`, data)
   }
 
-  UpdateSubservices(id: any): Observable<any> {
-    return this.http.put(`${this.staticData}/Subservice/Subservices/UpdateSubservice/${id}`, {})
+  UpdateSubservices(id: any, formData: FormData): Observable<any> {
+    return this.http.put(`${this.staticData}/Subservice/Subservices/UpdateSubservice/${id}`, formData)
   }
 
   deleteSubservice(id: any): Observable<any> {
@@ -141,7 +141,7 @@ export class URLService {
 
   deleteProject(id: any): Observable<any> {
 
-    return this.http.delete<any>(`${this.staticData}/Blog/DeletePost/${id}`)
+    return this.http.delete<any>(`${this.staticData}/Project/Project/DeleteProject/${id}`)
   }
 
   ///////////////contact////////////////////////////////
@@ -172,5 +172,12 @@ export class URLService {
   }
   addProject(form: FormData): Observable<any> {
     return this.http.post(`${this.staticData}/Project/Project/CreateProject`,form)
+  }
+
+
+  ////////////////////////Status///////////////////
+  UpdateStatus(id: any, status: string): Observable<any> {
+    const body = { Status: status }; // إرسال الحالة الجديدة
+    return this.http.put(`${this.staticData}/Request/editorder/${id}`, body);
   }
 }

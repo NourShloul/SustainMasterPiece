@@ -148,7 +148,7 @@ public partial class MyDbContext : DbContext
 
             entity.ToTable("Project");
 
-            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.ProjectName).HasMaxLength(50);
         });
 

@@ -145,7 +145,7 @@ namespace MasterPiece.Server.Controllers
                 return BadRequest("Invalid email or password.");
             }
 
-            return Ok(new { UserId = existingUser.AdminId, message = "Login successful" });
+            return Ok(new { UserId = existingUser.AdminId, message = "Login successful" , Email = existingUser.Email });
         }
 
         private byte[] HashPassword(string password, out byte[] salt)

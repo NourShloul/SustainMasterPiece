@@ -2,6 +2,7 @@
 using MasterPiece.Server.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MasterPiece.Server.Controllers
 {
@@ -65,7 +66,10 @@ namespace MasterPiece.Server.Controllers
 
             }
             return NotFound();
+        
         }
+
+
 
 
         [HttpDelete("Subservices/DeleteSubservice/{id}")]
@@ -92,17 +96,28 @@ namespace MasterPiece.Server.Controllers
         [HttpPost("Subservices/CreateSubservice")]
         public IActionResult CreateSubservice([FromForm] SubserviceDTO request)
         {
+            // تحقق من صحة البيانات
             if (!ModelState.IsValid)
             {
-                return BadRequest();
-
+                return BadRequest(new { Message = "Invalid input data." });
             }
+
+            // تحقق من وجود الخدمة بناءً على ServiceId
+            var parentService = _db.Services.FirstOrDefault(s => s.ServiceId == request.ServiceId);
+            if (parentService == null)
+            {
+                return NotFound(new { Message = $"Service with ID {request.ServiceId} not found." });
+            }
+
+            // إنشاء الكيان Subservice وربطه بالخدمة
             var service = new Subservice
             {
+                ServiceId = request.ServiceId,
                 Name = request.Name,
                 Description = request.Description
             };
-            // Handle image upload
+
+            // رفع الصورة إذا كانت موجودة
             if (request.Image != null && request.Image.Length > 0)
             {
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
@@ -112,7 +127,7 @@ namespace MasterPiece.Server.Controllers
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                var uniqueFileName = Guid.NewGuid().ToString() + "_" + request.Image.FileName;
+                var uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(request.Image.FileName);
                 var filePathWwwroot = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var fileStream = new FileStream(filePathWwwroot, FileMode.Create))
@@ -122,11 +137,16 @@ namespace MasterPiece.Server.Controllers
 
                 service.Image = $"/images/{uniqueFileName}";
             }
+
+            // حفظ الخدمة الفرعية في قاعدة البيانات
             _db.Subservices.Add(service);
             _db.SaveChanges();
-            return Ok(service);
 
+            // إرجاع الاستجابة
+            return Ok();
         }
+
+
 
 
         [HttpPut("Subservices/UpdateSubservice/{id:int}")]

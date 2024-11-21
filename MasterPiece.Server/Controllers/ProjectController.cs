@@ -110,35 +110,65 @@ namespace MasterPiece.Server.Controllers
         }
 
 
-        [HttpPut("Project/UpdateProject/{id:int}")]
-        public IActionResult UpdateProject([FromForm] ProjectDTO response, int id)
+        [HttpPut("Project/UpdateProject/{id:long}")]
+        public IActionResult UpdateProject([FromForm] ProjectDTO response, long id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Retrieve the project from the database
             var project = _db.Projects.FirstOrDefault(c => c.ProjectId == id);
-            if (project == null) return NotFound();
+            if (project == null)
+            {
+                return NotFound($"Project with ID {id} not found.");
+            }
+
+            // Update project properties
             project.ProjectName = response.ProjectName;
             project.Description = response.Description;
+
+            // Handle image update if a new image is provided
             if (response.Image != null && response.Image.Length > 0)
             {
+                // Define uploads folder path
                 var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
 
+                // Ensure the uploads folder exists
                 if (!Directory.Exists(uploadsFolder))
                 {
                     Directory.CreateDirectory(uploadsFolder);
                 }
 
-                var uniqueFileName = Guid.NewGuid().ToString() + "_" + response.Image.FileName;
+                // Delete the old image file if it exists
+                if (!string.IsNullOrEmpty(project.Image))
+                {
+                    var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", project.Image.TrimStart('/'));
+                    if (System.IO.File.Exists(oldFilePath))
+                    {
+                        System.IO.File.Delete(oldFilePath);
+                    }
+                }
+
+                // Generate a unique filename for the new image
+                var uniqueFileName = Guid.NewGuid().ToString() + "" + response.Image.FileName;
                 var filePathWwwroot = Path.Combine(uploadsFolder, uniqueFileName);
 
+                // Save the new image
                 using (var fileStream = new FileStream(filePathWwwroot, FileMode.Create))
                 {
                     response.Image.CopyTo(fileStream);
                 }
 
+                // Update the image path in the project entity
                 project.Image = $"/images/{uniqueFileName}";
             }
 
+            // Update the project entity in the database
             _db.Projects.Update(project);
             _db.SaveChanges();
+
             return Ok(project);
         }
     }

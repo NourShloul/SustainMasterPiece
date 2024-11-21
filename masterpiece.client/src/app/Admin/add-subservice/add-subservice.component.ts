@@ -8,8 +8,18 @@ import Swal from 'sweetalert2';
   styleUrl: './add-subservice.component.css'
 })
 export class AddSubserviceComponent {
-  ngOnInit() { }
+  services: any[] = [];
+  ngOnInit() {
+    this.loadServices();
+  }
+  loadServices() {
 
+    this._ser.getAllServices().subscribe((response: any) => {
+      this.services = response;
+    }, (error) => {
+      console.error('Failed to load services:', error);
+    });
+  }
   constructor(private _ser: URLService) { }
 
   image: any
@@ -19,7 +29,7 @@ export class AddSubserviceComponent {
   }
 
   addnewSubservice(data: any) {
-
+    console.log("data sub", data)
     var form = new FormData();
 
     for (let key in data) {
@@ -27,12 +37,11 @@ export class AddSubserviceComponent {
     }
 
     form.append("Image", this.image);
-
     this._ser.CreateSubservice(form).subscribe(() => {
       Swal.fire({
         icon: 'success',
-        title: 'Gym Added Successfully!',
-        text: 'The gym has been added successfully.',
+        title: 'Subservice Added Successfully!',
+        text: 'The subservice has been added successfully.',
         confirmButtonText: 'OK'
       });
     },

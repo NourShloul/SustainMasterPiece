@@ -21,7 +21,7 @@
       <div class="col-lg-4 col-md-6 wow fadeInUp" *ngFor="let item of servicesArray">
         <div class="services_items">
           <div class="icons">
-            <img src="assets/images/icons/services-icons-4.png" alt="">
+            <img src="https://localhost:7270{{item.image}}" alt="">
             <span></span>
           </div>
           <a routerLink="/subServices/{{item.serviceId}}">{{item.name}}</a>

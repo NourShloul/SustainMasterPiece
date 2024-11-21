@@ -18,21 +18,21 @@ export class AddServiceComponent {
     this.image = event.target.files[0];
   }
 
-  addnewService(data: any) {
-
+  addnewSubservice(data: any) {
+    debugger
+    console.log("data sub", data)
     var form = new FormData();
 
     for (let key in data) {
       form.append(key, data[key]);
     }
 
-    form.append("gymImage", this.image);
-
+    form.append("Image", this.image);
     this._ser.CreateService(form).subscribe(() => {
       Swal.fire({
         icon: 'success',
-        title: 'Gym Added Successfully!',
-        text: 'The gym has been added successfully.',
+        title: 'Subservice Added Successfully!',
+        text: 'The subservice has been added successfully.',
         confirmButtonText: 'OK'
       });
     },

@@ -22,6 +22,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
 
+//builder.Services.AddControllers()
+//    .AddJsonOptions(options =>
+//    {
+//        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+//    });
 
 builder.Services.AddScoped<EmailServices>();
 builder.Services.AddTransient<EmailServices>();

@@ -42,7 +42,7 @@
       <div class="col-lg-4 col-md-6 wow fadeInUp" *ngFor="let item of servicesArray">
         <div class="services_items">
           <div class="icons">
-            <img src="assets/images/icons/services-icons-1.png" alt="">
+            <img src="https://localhost:7270{{item.image}}" alt="">
             <span></span>
           </div>
           <a routerLink="/subServices/{{item.serviceId}}">{{item.name}}</a>
@@ -71,7 +71,7 @@
       <div class="col-lg-5 studios_text">
         <h6 class="wow fadeInUp">Our mission is to connect your brand with customers in a sustainable and impactful way.</h6>
         <p class="wow fadeInUp" data-wow-delay="0.2s">We believe in creating value through environmentally conscious strategies that resonate with today’s connected world.</p>
-        <a href="#" class="theme_btn wow fadeInUp" data-wow-delay="0.4s">Learn More <i class="fas fa-caret-right"></i></a>
+        <a routerLink="/about" class="theme_btn wow fadeInUp" data-wow-delay="0.4s">Learn More <i class="fas fa-caret-right"></i></a>
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@
         <h2>Customized Campaigns<br>for Every Client</h2>
         <p class="bold_p">Our approach combines creativity with data insights to deliver impactful results and elevate your brand.</p>
         <p>We’re committed to building meaningful connections between your brand and its audience. Let’s innovate, build, and amplify your digital presence with sustainable strategies and technology-driven solutions.</p>
-        <a href="#" class="theme_btn">Explore More Projects</a>
+        <a routerLink="/project" class="theme_btn">Explore More Projects</a>
       </div>
     </div>
   </div>
@@ -101,47 +101,6 @@
   <div class="shap_style ss_2 wow zoomIn"><span></span></div>
 </section>
 <!-- Introducing Area -->
-<!-- Digital Agency -->
-<section class="digital_agency">
-  <div class="tittle container">
-    <div class="ball"><span></span></div>
-    <h2>We’re Sustain: A Creative Digital Marketing & Strategy Agency</h2>
-    <p>Based in New York, Sustain is dedicated to helping businesses thrive online. Our vision is to enable every brand to reach its highest potential in the digital space. Our mission is to guide companies toward sustainable and successful strategies that drive growth and impact.</p>
-  </div>
-  <div class="agency_count">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-6">
-          <div class="watch">
-            <h4>See How We Work</h4>
-            <div class="zoomIn wow">
-              <a class="popup-youtube video_area animated" href="https://player.vimeo.com/video/142874198"><i class="flaticon-play-button-1"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-6 countarup_area">
-          <div class="counter_item wow zoomIn">
-            <h4>Completed Projects</h4>
-            <h2><span class="counter">30</span>k</h2>
-          </div>
-          <div class="counter_item wow zoomIn" data-wow-delay="0.2s">
-            <h4>Cups of Coffee</h4>
-            <h2 class="counter">451</h2>
-          </div>
-          <div class="counter_item wow zoomIn" data-wow-delay="0.4s">
-            <h4>Customers</h4>
-            <h2><span class="counter">120</span>k</h2>
-          </div>
-          <div class="counter_item wow zoomIn" data-wow-delay="0.6s">
-            <h4>Clients</h4>
-            <h2><span class="counter">130</span>k</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Digital Agency -->
 <!-- Testimonial Area -->
 <section class="testimonial_area">
   <div class="container">
@@ -217,51 +176,3 @@
   </div>
 </section>
 <!-- Team Area -->
-<!-- Tidings Blog Area -->
-<section class="tidings_blog_area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 tittle">
-        <h4>Tidings</h4>
-        <h2>From Our Blog</h2>
-        <p>Stay updated with insights, trends, and tips from the world of digital marketing. Subscribe to get the latest industry news and updates from Sustain, straight to your inbox.</p>
-        <a href="#">Explore More Articles</a>
-      </div>
-      <div class="col-lg-6 subscribe">
-        <h4>Subscribe for weekly updates <span>(only once a week)</span></h4>
-        <div class="input-group">
-          <input type="email" class="form-control" placeholder="Your email">
-          <div class="input-group-append">
-            <span class="input-group-text theme_btn">Subscribe</span>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 wow fadeIn" data-wow-delay="0.4s">
-        <div class="tidings_item">
-          <a href="blog-details.html" class="heding">Top Design Trends for Stunning Websites</a>
-          <h6>by <a href="#">Sarah Patel</a>, on April 19</h6>
-          <p>Explore the latest design trends that are reshaping the digital landscape and helping brands stand out.</p>
-          <a href="#" class="read_more">Read More</a>
-        </div>
-      </div>
-      <div class="col-lg-4 wow fadeIn" data-wow-delay="0.2s">
-        <div class="tidings_item">
-          <a href="blog-details.html" class="heding">Boosting Engagement with Interactive Content</a>
-          <h6>by <a href="#">James Lee</a>, on May 3</h6>
-          <p>Learn how interactive elements can enhance user experience and drive customer engagement effectively.</p>
-          <a href="#" class="read_more">Read More</a>
-        </div>
-      </div>
-      <div class="col-lg-4 wow fadeIn">
-        <div class="tidings_item">
-          <a href="blog-details.html" class="heding">Effective SEO Strategies for 2024</a>
-          <h6>by <a href="#">Maya Rivera</a>, on May 10</h6>
-          <p>Discover top SEO practices to improve your online visibility and stay ahead in search engine rankings.</p>
-          <a href="#" class="read_more">Read More</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="shap_style ss_2 wow zoomIn"><span></span></div>
-</section>
-<!-- Tidings Blog Area -->

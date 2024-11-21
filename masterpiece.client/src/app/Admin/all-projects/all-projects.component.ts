@@ -12,7 +12,7 @@ export class AllProjectsComponent {
   isModalOpen = false;
   selectedFile: File | null = null;
   formData = {
-    name: '',
+    ProjectName: '',
     Description: '',
   }; 
   currentProjectId: number | null = null; 
@@ -38,7 +38,7 @@ export class AllProjectsComponent {
   openModal(item: any) {
     this.isModalOpen = true;
     this.currentProjectId = item.projectId; 
-    this.formData.name = item.projectName;
+    this.formData.ProjectName = item.projectName;
     this.formData.Description = item.description;
   }
 
@@ -46,14 +46,14 @@ export class AllProjectsComponent {
   closeModal() {
     this.isModalOpen = false;
     this.currentProjectId = null; 
-    this.formData = { name: '', Description: '' }; 
+    this.formData = { ProjectName: '', Description: '' }; 
   }
 
   
   onSubmit() {
     if (this.currentProjectId !== null) {
       const formData = new FormData();
-      formData.append('ProjectName', this.formData.name);
+      formData.append('ProjectName', this.formData.ProjectName);
       formData.append('Description', this.formData.Description);
       if (!this.selectedFile) {
         console.error('No file selected');

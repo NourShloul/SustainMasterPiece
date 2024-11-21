@@ -14,9 +14,11 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router, private URLService: URLService) { }
 
+  AdminEmail :any
   ngOnInit(): void {
     // Check if there is a logged-in user ID on initial load
     this.userId = localStorage.getItem("userId");
+    this.AdminEmail = localStorage.getItem("AdminEmail")
 
     // Alternatively, subscribe to UserId updates if you're using an observable
     //this.URLService.UserIdmm.subscribe(user => {
@@ -28,6 +30,7 @@ export class NavbarComponent implements OnInit {
     this.logedINuser = "";
     this.userId = null;
     localStorage.removeItem("userId");
+    localStorage.removeItem("AdminEmail");
     this.router.navigate(['/']); // Navigate to home page
     window.location.reload(); // Reload to update UI
   }
